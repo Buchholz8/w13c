@@ -11,7 +11,8 @@
     </section>
     <section>
       <h2>PLaying...</h2>
-      <p></p>
+      <p class="active"></p>
+      <p>This is as far as i could make it without having to make each song individually and just hiding the playing tags, i couldnt figure out a way to save what button was pressed , and transfer that to the new tag ,  </p>
     </section>
   </div>
 </template>
@@ -19,13 +20,15 @@
 <script>
 export default {
   methods: {
-selected_song : function() {
+selected_song : function(details) {
   if(this.selected === true){
     this.selected = true
   } else {
     this.selected = !this.selected
   }
-
+details[`target`].getAttriobute(`key`)
+let playing = document.querySelector(`.active`)
+playing[`innerHTML`] = `key`
 }
   },
   data() {
