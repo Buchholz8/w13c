@@ -6,29 +6,13 @@
       <article v-for="(songs, i) in songs" :key="i">
         <p>{{ songs.title }}</p>
         <p>{{ songs.artist }}</p>
-        <img
-          :src="songs.image_url"
-          alt="Idk what to put here when it could be 3 dif things"
-        />
-        <button @click="song_select" keyword: song.song_id>Play</button>
+        <img :src="songs.image_url" alt="Idk what to put here when it could be 3 dif things"/>
+        <button @click="song_select">Play</button>
       </article>
     </section>
     <section class="playing_article">
     <h2>Now PLaying ..</h2>
-      <article>
-        <div v-if="selected === 1">
-            <p>You Proof</p>
-            <p> Morgan Wallen</p>
-        </div>
-           <div v-if="selected === 2">
-            <p>Thinkin'Bout Me</p>
-            <p> Morgan Wallen</p>
-        </div>
-        <div v-if="selected === 3">
-            <p>Marie</p>
-            <p> Sleepy Hallow</p>
-        </div>
-      </article>
+    <p class="playing_song"></p>
     </section>
   </div>
 </template>
@@ -37,12 +21,18 @@
 export default {
   methods: {
     song_select: function () {
-
+if(this.selected === true){
+    this.selected = true
+} else {
+   this.selected = !this.selected 
+}
+let playing_song = document.querySelector(`playing_song`)
+playing_song[`innerHTML`] = `${this.song.title}`
     },
   },
   data() {
     return {
-      selected: 0,
+      selected: false,
       songs: [
         {
           title: `You Proof`,
